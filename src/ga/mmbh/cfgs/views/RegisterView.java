@@ -105,7 +105,7 @@ public class RegisterView {
 		backButton.setEnabled(false);
 		backButton.setOpaque(false);
 		backButton.setBorder(BorderFactory.createEmptyBorder());
-		backButton.setIcon(new ImageIcon(RegisterView.class.getResource("/assets/img/return.png")));
+		backButton.setIcon(new ImageIcon(RegisterView.class.getResource("/ga/mmbh/cfgs/resources/return.png")));
 		backButton.setBounds(10, 22, 38, 33);
 		frame.getContentPane().add(backButton);
 		

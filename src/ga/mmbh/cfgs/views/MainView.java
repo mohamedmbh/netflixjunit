@@ -83,7 +83,7 @@ public class MainView {
 
 		// Back button
 		backButton = new JButton("");
-		backButton.setIcon(new ImageIcon(MainView.class.getResource("/return.png")));
+		backButton.setIcon(new ImageIcon(MainView.class.getResource("/ga/mmbh/cfgs/resources/return.png")));
 		backButton.setBounds(10, 39, 32, 28);
 		backButton.setBackground(AppUtils.TRANSPARENT_COLOR);
 		backButton.setOpaque(false);
