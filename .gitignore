@@ -1,0 +1,10 @@
+/.metadata/
+netflixjunit\bin
+**/bin/
+**/*.zip
+**/*.jar
+**/.classpath
+**/.gitignore
+**/.project
+/**/.settings/
+**/target

@@ -76,7 +76,7 @@ public class MovieCreateView {
 
 		// Back button
 		backButton = new JButton("");
-		backButton.setIcon(new ImageIcon(MovieCreateView.class.getResource("/return.png")));
+		backButton.setIcon(new ImageIcon(MovieCreateView.class.getResource("/ga/mmbh/cfgs/resources/return.png")));
 		backButton.setBounds(10, 39, 32, 28);
 		backButton.setBackground(AppUtils.BACKGROUND_COLOR);
 		backButton.setOpaque(false);
