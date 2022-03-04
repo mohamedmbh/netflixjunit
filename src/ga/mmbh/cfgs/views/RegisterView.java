@@ -123,6 +123,12 @@ public class RegisterView {
 	}
 	
 	public void setListeners() {
+		password2Field.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+			    if (event.getSource() == passwordField) registerButton.doClick();
+			}
+		});
+		
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();

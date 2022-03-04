@@ -112,6 +112,12 @@ public class LoginView {
 	 * Create buttons listeners
 	 */
 	public void createListeners() {
+		passwordField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+			    if (event.getSource() == passwordField) loginButton.doClick();
+			}
+		});
+		
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
@@ -132,6 +138,6 @@ public class LoginView {
 				frame.dispose();
 				new RegisterView(netflixApp);
 			}
-		});		
+		});
 	}	
 }

@@ -178,7 +178,7 @@ public class MovieCreateView {
 		saveMovieButton = new JButton("Guardar");
 		saveMovieButton.setForeground(Color.WHITE);
 		saveMovieButton.setBackground(AppUtils.GREEN_COLOR);
-		saveMovieButton.setBounds(268, 530, 100, 23);
+		saveMovieButton.setBounds(250, 530, 100, 23);
 		frame.getContentPane().add(saveMovieButton);
 		
 		// URL
@@ -189,7 +189,7 @@ public class MovieCreateView {
 		frame.getContentPane().add(URLLabel);
 		
 		URLField = new JTextField("");
-		URLField.setBounds(87, 530, 171, 23);
+		URLField.setBounds(87, 530, 150, 23);
 		frame.getContentPane().add(URLField);
 		
 		// Error label
