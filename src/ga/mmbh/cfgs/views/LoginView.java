@@ -118,7 +118,6 @@ public class LoginView {
 				String password = new String(passwordField.getPassword());
 				
 				if (!netflixApp.getUserManager().login(username, password)) {
-					System.out.println(username + " " + password);
 					errorLabel.setText("Ese usuario no existe");
 					return;
 				}

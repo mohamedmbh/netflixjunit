@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import ga.mmbh.cfgs.NetflixApp;
 import ga.mmbh.cfgs.managers.UserManager;
+import ga.mmbh.cfgs.utils.AppUtils;
 
 public class RegisterView {
 
@@ -37,56 +38,57 @@ public class RegisterView {
 
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setFont(AppUtils.getNetflixFont("Medium", 12));
+		frame.setFont(new Font("Rubik", Font.PLAIN, 14));
+		frame.getContentPane().setBackground(AppUtils.BACKGROUND_COLOR);
+		frame.getContentPane().setLayout(null);
+		frame.setBounds(100, 100, 500, 600);
 		frame.setVisible(true);
-		frame.getContentPane().setFont(new Font("SansSerif", Font.PLAIN, 11));
 		
-		frame.setFont(new Font("Bahnschrift", Font.PLAIN, 12));
 		frame.getContentPane().setBackground(new Color(39, 45, 54));
 		frame.getContentPane().setLayout(null);
 		
 		welcomeLabel = new JLabel("REGISTRO");
+		welcomeLabel.setFont(new Font("Dialog", Font.BOLD, 18));
 		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeLabel.setForeground(new Color(255, 255, 255));
-		welcomeLabel.setFont(new Font("Rubik", Font.BOLD, 22));
 		welcomeLabel.setBounds(107, 25, 244, 30);
 		frame.getContentPane().add(welcomeLabel);
 		
 		usernameLabel = new JLabel("Usuario");
-		usernameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
 		usernameLabel.setForeground(new Color(255, 255, 255));
-		usernameLabel.setBounds(107, 107, 244, 20);
+		usernameLabel.setBounds(125, 100, 250, 25);
 		frame.getContentPane().add(usernameLabel);
 		
 		usernameField = new JTextField();
-		usernameField.setBounds(107, 138, 244, 20);
+		usernameField.setBounds(125, 135, 250, 25);
 		frame.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 		
 		registerButton = new JButton("Registrarme");
 		registerButton.setBackground(new Color(176, 196, 222));
 		registerButton.setForeground(new Color(0, 0, 0));
-		registerButton.setFont(new Font("SansSerif", Font.PLAIN, 10));
-		registerButton.setBounds(107, 358, 244, 23);
+		registerButton.setBounds(125, 400, 250, 23);
 		frame.getContentPane().add(registerButton);
 		
 		passwordLabel = new JLabel("Contraseña");
 		passwordLabel.setForeground(Color.WHITE);
-		passwordLabel.setBounds(107, 183, 244, 20);
+		passwordLabel.setBounds(125, 180, 250, 25);
 		frame.getContentPane().add(passwordLabel);
 		
 		passwordField = new JPasswordField();
 		passwordField.setColumns(10);
-		passwordField.setBounds(107, 214, 244, 20);
+		passwordField.setBounds(125, 215, 250, 25);
 		frame.getContentPane().add(passwordField);
 		
 		password2Label = new JLabel("Repetir contraseña");
 		password2Label.setForeground(Color.WHITE);
-		password2Label.setBounds(107, 261, 244, 20);
+		password2Label.setBounds(125, 260, 250, 20);
 		frame.getContentPane().add(password2Label);
 		
 		password2Field = new JPasswordField();
 		password2Field.setColumns(10);
-		password2Field.setBounds(107, 292, 244, 20);
+		password2Field.setBounds(125, 295, 250, 25);
 		frame.getContentPane().add(password2Field);
 		
 		labelPickachuImage = new JLabel("");
@@ -106,17 +108,14 @@ public class RegisterView {
 		backButton.setEnabled(false);
 		backButton.setOpaque(false);
 		backButton.setBorder(BorderFactory.createEmptyBorder());
-<<<<<<< HEAD
 		backButton.setIcon(new ImageIcon(new File("resources/return.png").getAbsolutePath()));
-=======
-		backButton.setIcon(new ImageIcon(RegisterView.class.getResource("/ga/mmbh/cfgs/resources/return.png")));
->>>>>>> 0907103bd480206f97739f58bedcd04f948e9b0a
 		backButton.setBounds(10, 22, 38, 33);
 		frame.getContentPane().add(backButton);
 		
 		errorLabel = new JLabel("");
+		errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		errorLabel.setForeground(Color.RED);
-		errorLabel.setBounds(107, 420, 244, 14);
+		errorLabel.setBounds(0, 350, 500, 25);
 		frame.getContentPane().add(errorLabel);
 		
 		frame.setBounds(100, 100, 450, 500);
@@ -133,7 +132,6 @@ public class RegisterView {
 		
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
 				String username = usernameField.getText();
 				String password = new String(passwordField.getPassword());
 				String password2 = new String(password2Field.getPassword());
@@ -176,7 +174,7 @@ public class RegisterView {
 				}
 				
 				frame.dispose();
-				new LoginView(netflixApp);
+				new MainView(netflixApp);
 			}
 		});
 	}
