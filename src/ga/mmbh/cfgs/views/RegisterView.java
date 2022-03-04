@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -15,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import ga.mmbh.cfgs.NetflixApp;
-import ga.mmbh.cfgs.models.User;
+import ga.mmbh.cfgs.managers.UserManager;
 
 public class RegisterView {
 
@@ -89,7 +90,7 @@ public class RegisterView {
 		frame.getContentPane().add(password2Field);
 		
 		labelPickachuImage = new JLabel("");
-		labelPickachuImage.setIcon(new ImageIcon(RegisterView.class.getResource("/assets/img/pikachu.png")));
+		labelPickachuImage.setIcon(new ImageIcon(new File("resources/pikachu.png").getAbsolutePath()));
 		labelPickachuImage.setBounds(331, 11, 93, 93);
 		frame.getContentPane().add(labelPickachuImage);
 		
@@ -105,7 +106,11 @@ public class RegisterView {
 		backButton.setEnabled(false);
 		backButton.setOpaque(false);
 		backButton.setBorder(BorderFactory.createEmptyBorder());
+<<<<<<< HEAD
+		backButton.setIcon(new ImageIcon(new File("resources/return.png").getAbsolutePath()));
+=======
 		backButton.setIcon(new ImageIcon(RegisterView.class.getResource("/ga/mmbh/cfgs/resources/return.png")));
+>>>>>>> 0907103bd480206f97739f58bedcd04f948e9b0a
 		backButton.setBounds(10, 22, 38, 33);
 		frame.getContentPane().add(backButton);
 		
@@ -133,18 +138,46 @@ public class RegisterView {
 				String password = new String(passwordField.getPassword());
 				String password2 = new String(password2Field.getPassword());
 				
+				UserManager userManager = netflixApp.getUserManager();
+				
 				if (!password.equals(password2)) {
 					errorLabel.setText("Las contraseñas no coinciden");
 					return;
 				}
 				
-				register(username, password);
+				if (!userManager.isValidLength(password)) {
+					errorLabel.setText("La contraseña debe de ser entre 8 y 15 carácteres");
+					return;
+				}
+				
+				if (!userManager.hasUpperCase(password)) {
+					errorLabel.setText("La contraseña debe contener al menos una mayúscula");
+					return;
+				}
+				
+				if (!userManager.hasLowerCase(password)) {
+					errorLabel.setText("La contraseña debe contener al menos una minúscula");
+					return;
+				}
+				
+				if (!userManager.hasNumber(password)) {
+					errorLabel.setText("La contraseña debe contener al menos un número");
+					return;
+				}
+				
+				if (!userManager.hasSpecialCharacter(password)) {
+					errorLabel.setText("La contraseña debe contener un carácter especial '@' '#' '$' ó '%'");
+					return;
+				}
+				
+				if (!userManager.register(username, password)) {
+					errorLabel.setText("Ese usuario ya existe");
+					return;
+				}
+				
+				frame.dispose();
 				new LoginView(netflixApp);
 			}
 		});
-	}
-	
-	public void register(String username, String password) {
-		netflixApp.getUserManager().registerUser(new User(username, password));
 	}
 }
