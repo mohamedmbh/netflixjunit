@@ -27,46 +27,58 @@ public class MovieManagerTest {
 	@BeforeEach
 	@Test
 	@DisplayName("Create Movie Manager")
+	/**
+	 * Test que se ejecuta todo el rato
+	 */
 	public void beforeTest() {
 		moviemanager = new MovieManager();
 	}
 
 	@Test
 	@DisplayName("Add Movie")
+	/**
+	 * Comprobar que se agrega una película correctamente
+	 */
 	public void addMovieTest() {
 		movie = new Movie(1, "Scary Movie", 18, "Brendan Eich", Genre.DRAMA, 124,
 				"https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2020/10/scary-movie-2000-2113037.jpg");
 		result = moviemanager.addMovie(movie);
 		assertTrue(result);
-		
+
 		result = moviemanager.addMovie(null);
 		assertTrue(result);
 	}
 
 	@Test
 	@DisplayName("Remove Movie")
+	/**
+	 * Comprobar que se elimina una película correctamente
+	 */
 	public void removeMovieTest() {
 		result = moviemanager.removeMovie(moviemanager.getMovies().get(0));
 		assertTrue(result);
-		
+
 		assertThrows(IndexOutOfBoundsException.class, () -> {
 			moviemanager.removeMovie(moviemanager.getMovies().get(0));
 		});
 	}
-	
+
 	@Test
 	@DisplayName("Check if you can see it according to age")
+	/**
+	 * Comprueba si la edad de la película es para todo los públicos
+	 */
 	public void isAllAudienceMovieTest() {
 		movie = new Movie(2, "Scary Movie3", 3, "Brendan Eich", Genre.DRAMA, 124,
 				"https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2020/10/scary-movie-2000-2113037.jpg");
 		result = moviemanager.isAllAudienceMovie(movie);
 		assertTrue(result);
-		
+
 		movie = new Movie(2, "Scary Movie3", 18, "Brendan Eich", Genre.DRAMA, 124,
 				"https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2020/10/scary-movie-2000-2113037.jpg");
 		result = moviemanager.isAllAudienceMovie(movie);
 		assertFalse(result);
-		
+
 		assertThrows(NullPointerException.class, () -> {
 			moviemanager.isAllAudienceMovie(null);
 		});
@@ -74,17 +86,20 @@ public class MovieManagerTest {
 
 	@Test
 	@DisplayName("Check if it is for an adult audience")
+	/**
+	 * Comprueba si la película es para un público adulto
+	 */
 	public void isAdultMovieTest() {
 		movie = new Movie(2, "Scary Movie3", 3, "Brendan Eich", Genre.DRAMA, 124,
 				"https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2020/10/scary-movie-2000-2113037.jpg");
 		result = moviemanager.isAdultMovie(movie);
 		assertFalse(result);
-		
+
 		movie = new Movie(2, "Scary Movie3", 18, "Brendan Eich", Genre.DRAMA, 124,
 				"https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2020/10/scary-movie-2000-2113037.jpg");
 		result = moviemanager.isAdultMovie(movie);
 		assertTrue(result);
-		
+
 		assertThrows(NullPointerException.class, () -> {
 			moviemanager.isAdultMovie(null);
 		});
@@ -92,32 +107,38 @@ public class MovieManagerTest {
 
 	@Test
 	@DisplayName("is Valid Genre")
+	/*
+	 * Comprueba si el género de la película es valido
+	 */
 	public void isValidGenreTest() {
 		result = moviemanager.isValidGenre("ACTION");
 		assertTrue(result);
-		
+
 		result = moviemanager.isValidGenre("ACT");
 		assertFalse(result);
-		
+
 		result = moviemanager.isValidGenre(null);
 		assertFalse(result);
 	}
 
 	@Test
 	@DisplayName("Check name length")
+	/**
+	 * Comprueba el tamaño del nombre de la película
+	 */
 	public void checkMovieNameLengthTest() {
 		name = "PELICULA";
 		result = moviemanager.checkMovieNameLength(name);
 		assertFalse(result);
-		
+
 		name = "PELICULASUPERLARGANUMERO23123123123";
 		result = moviemanager.checkMovieNameLength(name);
 		assertTrue(result);
-		
+
 		name = "";
 		result = moviemanager.checkMovieNameLength(name);
 		assertFalse(result);
-		
+
 		name = null;
 		assertThrows(NullPointerException.class, () -> {
 			moviemanager.checkMovieNameLength(name);
@@ -126,25 +147,31 @@ public class MovieManagerTest {
 
 	@Test
 	@DisplayName("If the name exists")
+	/**
+	 * Comprueba si el nombre de la película existe
+	 */
 	public void existsMovieNameTest() {
 		name = "Scary Movie";
 		result = moviemanager.existsMovieName(name);
 		assertTrue(result);
-		
+
 		name = "Scary";
 		result = moviemanager.existsMovieName(name);
 		assertFalse(result);
-		
+
 		result = moviemanager.existsMovieName(null);
 		assertFalse(result);
 	}
 
 	@Test
 	@DisplayName("If the ID exists")
+	/**
+	 * Comprueba si la ID de la película existe
+	 */
 	public void existsMovieIdTest() {
 		result = moviemanager.existsMovieId(0);
 		assertTrue(result);
-		
+
 		result = moviemanager.existsMovieId(1);
 		assertFalse(result);
 	}
