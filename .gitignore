@@ -1,6 +1,5 @@
 /.metadata/
 netflixjunit\bin
-**/bin/
 **/*.zip
 **/*.jar
 **/.classpath
