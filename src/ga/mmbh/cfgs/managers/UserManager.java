@@ -50,7 +50,7 @@ public class UserManager {
 	}
 
 	public boolean isValidPassword(String password) {
-		return hasUpperCase(password) && hasLowerCase(password) && hasLowerCase(password) && hasSpecialCharacter(password);
+		return hasUpperCase(password) && hasNumber(password) && hasLowerCase(password) && hasLowerCase(password) && hasSpecialCharacter(password);
 	}
 
 	public boolean hasUpperCase(String password) {
